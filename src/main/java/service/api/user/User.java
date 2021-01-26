@@ -1,0 +1,72 @@
+package service.api.user;
+
+import com.github.mustachejava.DefaultMustacheFactory;
+import com.github.mustachejava.Mustache;
+import com.github.mustachejava.MustacheFactory;
+import io.restassured.http.ContentType;
+import io.restassured.response.Response;
+import service.Work;
+
+import java.io.IOException;
+import java.io.StringWriter;
+import java.io.Writer;
+import java.util.HashMap;
+
+import static io.restassured.RestAssured.given;
+
+public class User extends BaseApi{
+    public Response get(String userid) {
+        return given()
+                .queryParam("access_token", Work.getInstance().getToken())
+                .queryParam("userid", userid)
+                .when().log().all().get("https://qyapi.weixin.qq.com/cgi-bin/user/get")
+        .then().log().all().extract().response();
+
+    }
+
+    public Response update(String userid, HashMap<String, Object> data) {
+        data.put("userid", userid);
+
+        return given()
+                .queryParam("access_token", Work.getInstance().getToken())
+                .body(data)
+                .when().post("https://qyapi.weixin.qq.com/cgi-bin/user/update")
+                .then().extract().response();
+    }
+
+
+    public Response create(String userid, HashMap<String, Object> data) {
+        data.put("userid", userid);
+
+        return given()
+                .queryParam("access_token", Work.getInstance().getToken())
+                .body(data)
+                .when().log().all().post("https://qyapi.weixin.qq.com/cgi-bin/user/create")
+                .then().log().all().extract().response();
+    }
+
+    public Response clone(String userid, HashMap<String, Object> data) {
+        data.put("userid", userid);
+        //todo: 使用模板技术
+
+        String body=template("/service/api/user/user.json", data);
+
+        return given()
+                .queryParam("access_token", Work.getInstance().getToken())
+                .contentType(ContentType.JSON)
+                .body(body)
+                .when().log().all().post("https://qyapi.weixin.qq.com/cgi-bin/user/create")
+                .then().log().all().extract().response();
+    }
+
+    public Response delete(String userid) {
+        return given()
+                .queryParam("access_token", Work.getInstance().getToken())
+                .queryParam("userid", userid)
+                .when().log().all().get("https://qyapi.weixin.qq.com/cgi-bin/user/delete")
+                .then().log().all().extract().response();
+    }
+
+
+
+}

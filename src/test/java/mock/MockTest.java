@@ -1,6 +1,9 @@
 package mock;
 
+import org.hamcrest.Matchers;
+import org.junit.Assert;
 import org.junit.Test;
+import org.mockito.Mockito;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -16,25 +19,25 @@ public class MockTest {
         ArrayList<Integer> list=new ArrayList<Integer>();
         list.add(1);
         list.add(2);
-        assertThat(list.size(), equalTo(5));
+        Assert.assertThat(list.size(), Matchers.equalTo(5));
 
     }
 
     @Test
     public void testMockDemo2(){
-        ArrayList<Integer> list=mock(ArrayList.class);
+        ArrayList<Integer> list= Mockito.mock(ArrayList.class);
         list.add(1);
         list.add(2);
-        when(list.size()).thenReturn(500);
-        assertThat(list.size(), equalTo(500));
+        Mockito.when(list.size()).thenReturn(500);
+        Assert.assertThat(list.size(), Matchers.equalTo(500));
 
     }
 
     @Test
     public void testSpy(){
-        ArrayList<Integer> list=mock(ArrayList.class);
+        ArrayList<Integer> list= Mockito.mock(ArrayList.class);
         list.add(1);
         list.add(2);
-        verify(list).add(3);
+        Mockito.verify(list).add(3);
     }
 }

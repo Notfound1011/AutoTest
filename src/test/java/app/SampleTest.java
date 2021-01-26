@@ -18,9 +18,12 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.remote.DesiredCapabilities;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public class SampleTest {
 
+    private final Logger logger= LoggerFactory.getLogger(SampleTest.class);
     private AndroidDriver<AndroidElement> driver;
 
     @Before
@@ -54,7 +57,7 @@ public class SampleTest {
 
     @Test
     public void getPageSource(){
-        System.out.println(driver.getPageSource());
+        logger.info(driver.getPageSource());
         driver.pressKey(new KeyEvent(AndroidKey.ENTER));
     }
 

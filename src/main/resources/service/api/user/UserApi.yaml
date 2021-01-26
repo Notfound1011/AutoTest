@@ -1,0 +1,17 @@
+methods:
+  getUser:
+    query:
+      userid: ${userid}
+      name: wangqian
+    header:
+    postBodyRaw: "{\"address\":\"shanghai\",\"tel\":\"010-5578953\"}"
+    method: post
+    url: https://qyapi.weixin.qq.com/cgi-bin/user/get
+  queryHotel:
+    query:
+      hotelid: ${hotelid}
+      name: wangqian
+    header:
+    postBodyRaw:
+    method: post
+    url: https://qyapi.weixin.qq.com/cgi-bin/user/get

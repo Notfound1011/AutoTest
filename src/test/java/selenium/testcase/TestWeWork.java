@@ -3,15 +3,9 @@ package selenium.testcase;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.openqa.selenium.By;
-import org.openqa.selenium.Cookie;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import selenium.page.App;
 
 import java.net.MalformedURLException;
-import java.util.concurrent.TimeUnit;
 
 public class TestWeWork {
     public static App app;

@@ -1,5 +1,8 @@
 package unit;
 
+import io.qameta.allure.Step;
+import org.junit.jupiter.api.DisplayName;
+
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
@@ -15,6 +18,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 public class TestJUnit5Params {
+    @Step("Simple test method with step annotation")
     @ParameterizedTest
     @MethodSource("stringIntAndListProvider")
     void testWithMultiArgMethodSource(String str, int num, List<String> list) {
@@ -30,5 +34,10 @@ public class TestJUnit5Params {
         data.add(arguments("apple", 1, Arrays.asList("a", "b")));
         return data.stream();
 
+    }
+
+    @Test
+    public void addition() {
+        assertEquals(2, 2);
     }
 }

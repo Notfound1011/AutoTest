@@ -1,15 +1,14 @@
 package mock;
 
-import mock.Division;
+import org.hamcrest.Matchers;
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentMatchers;
+import org.mockito.Mockito;
 
-import static org.hamcrest.Matchers.equalTo;
-import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.anyInt;
 import static org.mockito.Mockito.mock;
-import static org.mockito.Mockito.when;
 
 public class DivisionTest {
 
@@ -25,17 +24,17 @@ public class DivisionTest {
 
     @Test
     public void divid() {
-        assertThat(division.divid(10, 5), equalTo(2));
+        Assert.assertThat(division.divid(10, 5), Matchers.equalTo(2));
     }
 
     @Test
     public void dividReturnWithZero(){
-        assertThat(division.divid(1, 2), equalTo(0));
+        Assert.assertThat(division.divid(1, 2), Matchers.equalTo(0));
     }
 
     @Test
     public void dividByZero(){
-        assertThat(division.divid(100, 0), equalTo(null));
+        Assert.assertThat(division.divid(100, 0), Matchers.equalTo(null));
     }
 
 //    @Test
@@ -46,25 +45,25 @@ public class DivisionTest {
 
     @Test
     public void divid2(){
-        assertThat(division2.divid2(100, 10 ,5, division), equalTo(2));
-        Division mockDivision=mock(Division.class);
-        when(mockDivision.divid(anyInt(), anyInt())).thenReturn(11);
+        Assert.assertThat(division2.divid2(100, 10 ,5, division), Matchers.equalTo(2));
+        Division mockDivision= Mockito.mock(Division.class);
+        Mockito.when(mockDivision.divid(ArgumentMatchers.anyInt(), ArgumentMatchers.anyInt())).thenReturn(11);
         System.out.println(mockDivision.divid(0, 2));
 
-        assertThat(division2.divid2(0, 1 ,5, mockDivision), equalTo(0));
+        Assert.assertThat(division2.divid2(0, 1 ,5, mockDivision), Matchers.equalTo(0));
 
     }
 
     @Test
     public void divid3(){
-        Division2 mockDivision2=mock(Division2.class);
-        when(mockDivision2.divid3(anyInt(), anyInt(), anyInt())).thenCallRealMethod();
+        Division2 mockDivision2= Mockito.mock(Division2.class);
+        Mockito.when(mockDivision2.divid3(ArgumentMatchers.anyInt(), ArgumentMatchers.anyInt(), ArgumentMatchers.anyInt())).thenCallRealMethod();
 
-        when(mockDivision2.divid(anyInt(), anyInt())).thenReturn(10);
-        assertThat(mockDivision2.divid3(0, 0, 5), equalTo(2));
+        Mockito.when(mockDivision2.divid(ArgumentMatchers.anyInt(), ArgumentMatchers.anyInt())).thenReturn(10);
+        Assert.assertThat(mockDivision2.divid3(0, 0, 5), Matchers.equalTo(2));
 
-        when(mockDivision2.divid(anyInt(), anyInt())).thenReturn(100);
-        assertThat(mockDivision2.divid3(0, 0, 5), equalTo(0));
+        Mockito.when(mockDivision2.divid(ArgumentMatchers.anyInt(), ArgumentMatchers.anyInt())).thenReturn(100);
+        Assert.assertThat(mockDivision2.divid3(0, 0, 5), Matchers.equalTo(0));
 
 
     }

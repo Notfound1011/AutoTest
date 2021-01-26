@@ -1,0 +1,8 @@
+spring:
+    profiles:
+        active:
+            - local
+            - dev
+            - fvt
+            - t1
+            - t2

@@ -3,7 +3,7 @@ methods:
     steps:
   #    - element: search_input
       - id: home_search
-  #    - locator: [ id: xxx, xpath: ddd ]
+#      - locator: [ id: xxx, xpath: ddd ]
 
   #elements:
   #  search_input:

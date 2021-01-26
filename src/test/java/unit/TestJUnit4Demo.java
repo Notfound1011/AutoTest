@@ -32,19 +32,19 @@ public class TestJUnit4Demo {
     @Test
     public void testDemo3(){
         System.out.println("testDemo3");
-        assertTrue(false);
+        Assert.assertTrue(false);
     }
 
     @Test
     public void testDemo1(){
         System.out.println("testDemo1");
-        assertTrue(true);
+        Assert.assertTrue(true);
     }
 
     @Test
     public void testDemo2(){
         System.out.println("testDemo2");
-        assertTrue(false);
+        Assert.assertTrue(false);
     }
 
 }

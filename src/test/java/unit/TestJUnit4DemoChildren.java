@@ -32,19 +32,19 @@ public class TestJUnit4DemoChildren extends TestJUnit4Demo {
     @Test
     public void testDemo3Children(){
         System.out.println("unit.TestJUnit4DemoChildren testDemo3");
-        assertTrue(false);
+        Assert.assertTrue(false);
     }
 
     @Test
     public void testDemo1Children(){
         System.out.println("unit.TestJUnit4DemoChildren testDemo1");
-        assertTrue(true);
+        Assert.assertTrue(true);
     }
 
     @Test
     public void testDemo2Children(){
         System.out.println("unit.TestJUnit4DemoChildren testDemo2");
-        assertTrue(false);
+        Assert.assertTrue(false);
     }
 
 }
