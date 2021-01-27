@@ -14,7 +14,7 @@ import static framework.AllureLog.addHttpLogToAllure;
 import static org.hamcrest.Matchers.equalTo;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
-class TestCtripHotel {
+public class TestCtripHotel {
     static ctripHotel ctripHotel = new ctripHotel();
     private static final Logger logger= Logger.getLogger(TestCtripHotel.class);
 

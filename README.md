@@ -1,6 +1,9 @@
-## 自动化框架
+## 自动化框架搭建
+
+> java+rest Assured+junit5+allure+log4j/lombak+jenkins
 
 ### junit5
+
 [junit5官方文档](https://junit.org/junit5/docs/current/user-guide/)
 
 > JUnit 5 = JUnit Platform + JUnit Jupiter + JUnit Vintage
@@ -8,7 +11,7 @@
 【踩坑】用IDEA注意添加下面的依赖,注意版本匹配
 [链接](https://junit.org/junit5/docs/current/user-guide/#running-tests-ide-intellij-idea)
 
-```
+```xml
 <!-- Only needed to run tests in a version of IntelliJ IDEA that bundles older versions -->
 <dependency>
     <groupId>org.junit.platform</groupId>
@@ -31,7 +34,8 @@
 ```
 
 maven依赖（junit5）
-```
+
+```xml
 <build>
     <plugins>
         <plugin>
@@ -99,9 +103,12 @@ maven依赖（junit5）
 
 
 ### 测试报告：allure
+
 [allure官方文档](https://docs.qameta.io/allure/)
 
-启动allure服务: `allure serve target/allure-results`
+
+
+启动allure服务:`allure serve target/allure-results`
 
 注解的使用
 
@@ -116,7 +123,9 @@ maven依赖（junit5）
 ```
 
 ### maven
+
 常见mvn命令
+
 ```
 mvn compile 编译源代码
 mvn test-compile 编译测试代码
@@ -136,5 +145,71 @@ mvn verify 运行任何检查，验证包是否有效且达到质量标准
 -Dmaven.test.failure.ignore=true 忽略测试失败
 ```
 
-执行单条测试用例： `mvn clean test -Dtest=TestCtripHotel`
+执行单条测试用例： 
+
+`mvn clean test -Dtest=service.testcase.ctripHotel.TestCtripHotel`
+
+
+
+### 日志：log4j
+
+```java
+import org.apache.log4j.Logger;
+private static final Logger logger= Logger.getLogger(TestCtripHotel.class);
+logger.info("执行测试用例：发送请求");
+```
+
+
+
+### jackson
+
+> 目的：数据驱动-->  使用Jackson的ObjectMapper类操作读取yaml文件，加载定义的对象
+
+```java
+ObjectMapper mapper = new ObjectMapper(new YAMLFactory());
+
+ApiObjectModel model = mapper.readValue(BaseApi.class.getResourceAsStream(path), ApiObjectModel.class)
+```
+
+
+
+### Jenkins
+
+#### 1.docker创建Jenkins服务：
+
+`docker run -itd -p 8080:8080 -p 50000:50000 --name jenkins --privileged=true -v ~/dev/apache-maven-3.6.3:/usr/local/apache-maven-3.6.3 -v ~/dev/jenkins:/var/jenkins_home jenkins/jenkins:lts`
+
+
+
+#### 2.安装插件(系统管理-插件管理)：
+
+- allure：配置系统配置
+
+  ![image-20210126164634203](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164634203.png)
+
+#### 3.创建job：
+
+- git:添加仓库地址和认证凭据
+
+  ![image-20210126164724884](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164724884.png)
+
+- 构建：/usr/local/apache-maven-3.6.3/bin/mvn clean test
+
+  ![image-20210126164942044](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164942044.png)
+
+- allure report：设置allure报告文件的地址
+
+![image-20210126164850721](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164850721.png)
+
+- 邮件配置
+
+  - 提前在系统设置里填写发送邮件的配置
+
+  ![image-20210126200709191](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126200709191.png)
+
+  ![image-20210126200731376](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126200731376.png)
+
+  - job中添加触发邮件的时机
+
+  ![image-20210126200524971](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126200524971.png)
 
