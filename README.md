@@ -185,31 +185,38 @@ ApiObjectModel model = mapper.readValue(BaseApi.class.getResourceAsStream(path),
 
 - allure：配置系统配置
 
-  ![image-20210126164634203](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164634203.png)
+  image-20210126164634203.png![image](https://user-images.githubusercontent.com/37465937/109389096-d3ea8b00-7945-11eb-811a-efafb01fc4ff.png)
+
 
 #### 3.创建job：
 
 - git:添加仓库地址和认证凭据
 
-  ![image-20210126164724884](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164724884.png)
+  image-20210126164724884.png![image](https://user-images.githubusercontent.com/37465937/109389110-e8c71e80-7945-11eb-9345-c8231e133e03.png)
+
 
 - 构建：/usr/local/apache-maven-3.6.3/bin/mvn clean test
 
-  ![image-20210126164942044](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164942044.png)
+  image-20210126164942044.png![image](https://user-images.githubusercontent.com/37465937/109389120-fd0b1b80-7945-11eb-88ca-7dbfd6ba7552.png)
+
 
 - allure report：设置allure报告文件的地址
 
-![image-20210126164850721](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126164850721.png)
+image-20210126164850721.png![image](https://user-images.githubusercontent.com/37465937/109389132-0a280a80-7946-11eb-96da-f1e5d43c4ab0.png)
+
 
 - 邮件配置
 
   - 提前在系统设置里填写发送邮件的配置
 
-  ![image-20210126200709191](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126200709191.png)
+  image-20210126200709191.png![image](https://user-images.githubusercontent.com/37465937/109389140-1f9d3480-7946-11eb-844d-ea7ce206bea1.png)
 
-  ![image-20210126200731376](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126200731376.png)
+
+  image-20210126200731376.png![image](https://user-images.githubusercontent.com/37465937/109389144-275cd900-7946-11eb-81a1-4139417bd99b.png)
+
 
   - job中添加触发邮件的时机
 
-  ![image-20210126200524971](/Users/shiyuyu/Library/Application Support/typora-user-images/image-20210126200524971.png)
+ image-20210126200524971.png![image](https://user-images.githubusercontent.com/37465937/109389148-2deb5080-7946-11eb-8ce0-5ba48917fe88.png)
+
 
