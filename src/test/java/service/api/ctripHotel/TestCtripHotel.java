@@ -1,11 +1,9 @@
-package service.testcase.ctripHotel;
+package service.api.ctripHotel;
 
-import framework.LogBuild;
 import io.qameta.allure.Severity;
 import io.qameta.allure.SeverityLevel;
 import io.qameta.allure.Story;
 
-import io.restassured.response.ValidatableResponseOptions;
 import org.junit.jupiter.api.*;
 import org.apache.log4j.Logger;
 

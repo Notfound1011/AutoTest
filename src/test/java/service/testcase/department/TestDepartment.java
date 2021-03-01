@@ -2,7 +2,7 @@ package service.testcase.department;
 
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
-import service.department.api.Department;
+import service.api.department.Department;
 
 import java.util.ArrayList;
 

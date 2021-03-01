@@ -147,7 +147,7 @@ mvn verify 运行任何检查，验证包是否有效且达到质量标准
 
 执行单条测试用例： 
 
-`mvn clean test -Dtest=service.testcase.ctripHotel.TestCtripHotel`
+`mvn clean test -Dtest=TestCtripHotel`
 
 
 

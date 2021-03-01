@@ -1,4 +1,4 @@
-package service.department.api;
+package service.api.department;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
